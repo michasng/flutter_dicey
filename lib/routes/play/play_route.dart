@@ -35,7 +35,10 @@ class PlayRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Game(availableDice: dice),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Game(availableDice: dice),
+      ),
     );
   }
 }
