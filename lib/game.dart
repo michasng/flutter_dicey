@@ -1,37 +1,70 @@
+import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
-import 'package:dicey/routes/play/components/dice/die_action.dart';
-import 'package:dicey/routes/play/components/dice/die_side.dart';
-import 'package:dicey/routes/play/components/dice/rolled_die.dart';
-import 'package:dicey/routes/play/components/dice/unrolled_die.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatefulWidget {
-  const Game({super.key});
+  final List<Die> availableDice;
+
+  const Game({
+    super.key,
+    required this.availableDice,
+  });
 
   @override
   State<Game> createState() => _GameState();
 }
 
 class _GameState extends State<Game> {
-  final dice = const [
-    Die(
-      color: Color(0xff660000),
-      sides: [
-        DieSide(action: DieAction.attack),
-        DieSide(action: DieAction.heal),
-        DieSide(action: DieAction.burn),
-      ],
-    ),
-  ];
+  final List<Die> wontBeRolledDice = [];
+  final List<Die> willBeRolledDice = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    wontBeRolledDice.addAll(widget.availableDice);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final theme = Theme.of(context);
+
+    return Row(
       children: [
-        UnrolledDie(die: dice[0]),
-        RolledDie(
-          dice[0],
-          upIndex: 0,
+        Flexible(
+          child: ListView(
+            children: [
+              Text(
+                'Won\'t be rolled',
+                style: theme.textTheme.headlineSmall,
+              ),
+              DicePool(
+                dice: wontBeRolledDice,
+                onTapDie: (die) => setState(() {
+                  wontBeRolledDice.remove(die);
+                  willBeRolledDice.add(die);
+                }),
+              ),
+            ],
+          ),
+        ),
+        const VerticalDivider(),
+        Flexible(
+          child: ListView(
+            children: [
+              Text(
+                'Will be rolled',
+                style: theme.textTheme.headlineSmall,
+              ),
+              DicePool(
+                dice: willBeRolledDice,
+                onTapDie: (die) => setState(() {
+                  willBeRolledDice.remove(die);
+                  wontBeRolledDice.add(die);
+                }),
+              ),
+            ],
+          ),
         ),
       ],
     );
