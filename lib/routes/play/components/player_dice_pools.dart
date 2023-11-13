@@ -1,3 +1,5 @@
+import 'package:dicey/components/layout/gap.dart';
+import 'package:dicey/components/layout/with_separator.dart';
 import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +49,7 @@ class _PlayerDicePoolsState extends State<PlayerDicePools> {
                   _willBeRolledDice.add(die);
                 }),
               ),
-            ],
+            ].withSeparator(const Gap()),
           ),
         ),
         const VerticalDivider(),
@@ -74,7 +76,7 @@ class _PlayerDicePoolsState extends State<PlayerDicePools> {
                   _wontBeRolledDice.add(die);
                 }),
               ),
-            ],
+            ].withSeparator(const Gap()),
           ),
         ),
       ],

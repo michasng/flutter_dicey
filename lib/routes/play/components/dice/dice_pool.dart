@@ -1,3 +1,5 @@
+import 'package:dicey/components/layout/gap.dart';
+import 'package:dicey/components/layout/with_separator.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/unrolled_die.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +17,13 @@ class DicePool extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         for (final die in dice)
           InkWell(
             child: UnrolledDie(die: die),
             onTap: () => onTapDie?.call(die),
           ),
-      ],
+      ].withSeparator(const Gap() * 0.5),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:dicey/components/layout/gap.dart';
+import 'package:dicey/components/layout/with_separator.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
 import 'package:dicey/routes/play/components/player_dice_pools.dart';
@@ -48,15 +50,16 @@ class _GameState extends State<Game> {
           ),
         ),
         if (_rolledDice.isNotEmpty) ...[
+          const Divider(),
           Text(
             'Rolled',
             style: theme.textTheme.headlineMedium,
           ),
-          const Divider(),
+          const Gap(),
           Row(
-            children: [
+            children: <Widget>[
               for (final rolledDie in _rolledDice) rolledDie,
-            ],
+            ].withSeparator(const Gap() * 0.5),
           ),
         ],
       ],
