@@ -1,5 +1,6 @@
 import 'package:dicey/components/layout/gap.dart';
 import 'package:dicey/components/layout/with_separator.dart';
+import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:flutter/material.dart';
@@ -31,16 +32,13 @@ class _PlayerDicePoolsState extends State<PlayerDicePools> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Row(
       children: [
         Flexible(
           child: ListView(
             children: [
-              Text(
-                'Won\'t be rolled',
-                style: theme.textTheme.headlineSmall,
+              StyledText.headlineSmall(
+                child: const Text('Won\'t be rolled'),
               ),
               DicePool(
                 dice: _wontBeRolledDice,
@@ -59,9 +57,8 @@ class _PlayerDicePoolsState extends State<PlayerDicePools> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Will be rolled',
-                    style: theme.textTheme.headlineSmall,
+                  StyledText.headlineSmall(
+                    child: const Text('Will be rolled'),
                   ),
                   ElevatedButton(
                     child: const Text('Roll!'),

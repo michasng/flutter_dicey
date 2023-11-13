@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:dicey/components/layout/gap.dart';
 import 'package:dicey/components/layout/with_separator.dart';
+import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
 import 'package:dicey/routes/play/components/player_dice_pools.dart';
@@ -38,8 +39,6 @@ class _GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -51,9 +50,8 @@ class _GameState extends State<Game> {
         ),
         if (_rolledDice.isNotEmpty) ...[
           const Divider(),
-          Text(
-            'Rolled',
-            style: theme.textTheme.headlineMedium,
+          StyledText.headlineMedium(
+            child: const Text('Rolled'),
           ),
           const Gap(),
           Row(
