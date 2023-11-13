@@ -25,7 +25,15 @@ class PlayerRollCard extends StatefulWidget {
 }
 
 class _PlayerRollCardState extends State<PlayerRollCard> {
+  final List<Die> _wontBeRolledDice = [];
+  final List<Die> _willBeRolledDice = [];
   List<RolledDie> _rolledDice = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _wontBeRolledDice.addAll(widget.availableDice);
+  }
 
   void rollDice(List<Die> diceToRoll) {
     setState(() {
@@ -34,6 +42,7 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
             (die) => RolledDie.random(
               die,
               rng: widget.rng,
+              size: 32,
             ),
           )
           .toList();
@@ -48,27 +57,37 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            StyledText.headlineMedium(
-              child: Text(widget.playerName),
+            Row(
+              children: [
+                StyledText.headlineSmall(
+                  child: Text(widget.playerName),
+                ),
+                const Spacer(),
+                ..._rolledDice.cast<Widget>().separated(const Gap() * 0.5),
+                const Gap(),
+                ElevatedButton(
+                  onPressed: _willBeRolledDice.isEmpty
+                      ? null
+                      : () => rollDice(_willBeRolledDice),
+                  child: const Text('Roll!'),
+                ),
+              ],
             ),
             const Divider(),
             Flexible(
               child: PlayerDicePools(
-                availableDice: widget.availableDice,
-                onRollDice: rollDice,
+                wontBeRolledDice: _wontBeRolledDice,
+                willBeRolledDice: _willBeRolledDice,
+                moveToWillBeRolled: (die) => setState(() {
+                  _wontBeRolledDice.remove(die);
+                  _willBeRolledDice.add(die);
+                }),
+                moveToWontBeRolled: (die) => setState(() {
+                  _willBeRolledDice.remove(die);
+                  _wontBeRolledDice.add(die);
+                }),
               ),
             ),
-            if (_rolledDice.isNotEmpty) ...[
-              const Divider(),
-              StyledText.headlineSmall(
-                child: const Text('Rolled'),
-              ),
-              const Gap(),
-              Row(
-                children:
-                    _rolledDice.cast<Widget>().separated(const Gap() * 0.5),
-              ),
-            ],
           ],
         ),
       ),

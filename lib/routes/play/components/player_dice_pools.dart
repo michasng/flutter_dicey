@@ -1,69 +1,36 @@
 import 'package:dicey/components/layout/separated.dart';
 import 'package:dicey/components/layout/wrapped.dart';
-import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:flutter/material.dart';
 
-class PlayerDicePools extends StatefulWidget {
-  final List<Die> availableDice;
-  final void Function(List<Die> dice)? onRollDice;
+class PlayerDicePools extends StatelessWidget {
+  final List<Die> wontBeRolledDice;
+  final List<Die> willBeRolledDice;
+  final void Function(Die die) moveToWillBeRolled;
+  final void Function(Die die) moveToWontBeRolled;
 
   const PlayerDicePools({
     super.key,
-    required this.availableDice,
-    this.onRollDice,
+    required this.wontBeRolledDice,
+    required this.willBeRolledDice,
+    required this.moveToWillBeRolled,
+    required this.moveToWontBeRolled,
   });
-
-  @override
-  State<PlayerDicePools> createState() => _PlayerDicePoolsState();
-}
-
-class _PlayerDicePoolsState extends State<PlayerDicePools> {
-  final List<Die> _wontBeRolledDice = [];
-  final List<Die> _willBeRolledDice = [];
-
-  @override
-  void initState() {
-    super.initState();
-
-    _wontBeRolledDice.addAll(widget.availableDice);
-  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         DicePool(
-          title: StyledText.headlineSmall(
-            child: const Text('Won\'t be rolled'),
-          ),
-          dice: _wontBeRolledDice,
-          onTapDie: (die) => setState(() {
-            _wontBeRolledDice.remove(die);
-            _willBeRolledDice.add(die);
-          }),
+          title: const Text('Won\'t be rolled'),
+          dice: wontBeRolledDice,
+          onTapDie: moveToWillBeRolled,
         ),
         DicePool(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              StyledText.headlineSmall(
-                child: const Text('Will be rolled'),
-              ),
-              ElevatedButton(
-                onPressed: _willBeRolledDice.isEmpty
-                    ? null
-                    : () => widget.onRollDice?.call(_willBeRolledDice),
-                child: const Text('Roll!'),
-              ),
-            ],
-          ),
-          dice: _willBeRolledDice,
-          onTapDie: (die) => setState(() {
-            _willBeRolledDice.remove(die);
-            _wontBeRolledDice.add(die);
-          }),
+          title: const Text('Will be rolled'),
+          dice: willBeRolledDice,
+          onTapDie: moveToWontBeRolled,
         ),
       ]
           .wrapped((item) => Flexible(child: item))
