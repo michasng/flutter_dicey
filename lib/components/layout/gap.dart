@@ -10,7 +10,7 @@ class Gap extends StatelessWidget {
     this.size = defaultGapSize,
   });
 
-  operator *(double factor) {
+  Gap operator *(double factor) {
     return Gap(size: size * factor);
   }
 

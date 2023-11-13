@@ -55,9 +55,8 @@ class _GameState extends State<Game> {
           ),
           const Gap(),
           Row(
-            children: <Widget>[
-              for (final rolledDie in _rolledDice) rolledDie,
-            ].withSeparator(const Gap() * 0.5),
+            children:
+                _rolledDice.cast<Widget>().withSeparator(const Gap() * 0.5),
           ),
         ],
       ],
