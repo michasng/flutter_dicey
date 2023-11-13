@@ -61,8 +61,10 @@ class _PlayerDicePoolsState extends State<PlayerDicePools> {
                     child: const Text('Will be rolled'),
                   ),
                   ElevatedButton(
+                    onPressed: _willBeRolledDice.isEmpty
+                        ? null
+                        : () => widget.onRollDice?.call(_willBeRolledDice),
                     child: const Text('Roll!'),
-                    onPressed: () => widget.onRollDice?.call(_willBeRolledDice),
                   ),
                 ],
               ),
