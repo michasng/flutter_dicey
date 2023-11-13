@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dicey/game.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/die_action.dart';
@@ -37,7 +39,10 @@ class PlayRoute extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Game(availableDice: dice),
+        child: Game(
+          availableDice: dice,
+          rng: Random(),
+        ),
       ),
     );
   }
