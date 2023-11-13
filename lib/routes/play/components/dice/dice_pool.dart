@@ -1,5 +1,5 @@
 import 'package:dicey/components/layout/gap.dart';
-import 'package:dicey/components/layout/with_separator.dart';
+import 'package:dicey/components/layout/separated.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/unrolled_die.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class DicePool extends StatelessWidget {
               child: UnrolledDie(die: die),
               onTap: () => onTapDie?.call(die),
             ),
-        ].withSeparator(const Gap() * 0.5),
+        ].separated(const Gap() * 0.5),
       ],
     );
   }

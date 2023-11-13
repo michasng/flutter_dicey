@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:dicey/components/layout/gap.dart';
-import 'package:dicey/components/layout/with_separator.dart';
+import 'package:dicey/components/layout/separated.dart';
 import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
@@ -55,8 +55,7 @@ class _GameState extends State<Game> {
           ),
           const Gap(),
           Row(
-            children:
-                _rolledDice.cast<Widget>().withSeparator(const Gap() * 0.5),
+            children: _rolledDice.cast<Widget>().separated(const Gap() * 0.5),
           ),
         ],
       ],
