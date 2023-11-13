@@ -1,5 +1,3 @@
-import 'package:dicey/components/layout/gap.dart';
-import 'package:dicey/components/layout/with_separator.dart';
 import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
@@ -35,47 +33,39 @@ class _PlayerDicePoolsState extends State<PlayerDicePools> {
     return Row(
       children: [
         Flexible(
-          child: ListView(
-            children: [
-              StyledText.headlineSmall(
-                child: const Text('Won\'t be rolled'),
-              ),
-              DicePool(
-                dice: _wontBeRolledDice,
-                onTapDie: (die) => setState(() {
-                  _wontBeRolledDice.remove(die);
-                  _willBeRolledDice.add(die);
-                }),
-              ),
-            ].withSeparator(const Gap()),
+          child: DicePool(
+            title: StyledText.headlineSmall(
+              child: const Text('Won\'t be rolled'),
+            ),
+            dice: _wontBeRolledDice,
+            onTapDie: (die) => setState(() {
+              _wontBeRolledDice.remove(die);
+              _willBeRolledDice.add(die);
+            }),
           ),
         ),
         const VerticalDivider(),
         Flexible(
-          child: ListView(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  StyledText.headlineSmall(
-                    child: const Text('Will be rolled'),
-                  ),
-                  ElevatedButton(
-                    onPressed: _willBeRolledDice.isEmpty
-                        ? null
-                        : () => widget.onRollDice?.call(_willBeRolledDice),
-                    child: const Text('Roll!'),
-                  ),
-                ],
-              ),
-              DicePool(
-                dice: _willBeRolledDice,
-                onTapDie: (die) => setState(() {
-                  _willBeRolledDice.remove(die);
-                  _wontBeRolledDice.add(die);
-                }),
-              ),
-            ].withSeparator(const Gap()),
+          child: DicePool(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                StyledText.headlineSmall(
+                  child: const Text('Will be rolled'),
+                ),
+                ElevatedButton(
+                  onPressed: _willBeRolledDice.isEmpty
+                      ? null
+                      : () => widget.onRollDice?.call(_willBeRolledDice),
+                  child: const Text('Roll!'),
+                ),
+              ],
+            ),
+            dice: _willBeRolledDice,
+            onTapDie: (die) => setState(() {
+              _willBeRolledDice.remove(die);
+              _wontBeRolledDice.add(die);
+            }),
           ),
         ),
       ],
