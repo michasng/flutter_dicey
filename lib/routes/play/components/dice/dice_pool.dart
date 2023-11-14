@@ -25,7 +25,11 @@ class DicePool extends StatelessWidget {
         ...<Widget>[
           for (final die in dice)
             InkWell(
-              child: UnrolledDie(die: die),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: UnrolledDie(die: die),
+              ),
               onTap: () => onTapDie?.call(die),
             ),
         ].separated(const Gap() * 0.5),
