@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:dicey/components/layout/gap.dart';
 import 'package:dicey/components/layout/separated.dart';
+import 'package:dicey/components/layout/wrapped.dart';
 import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
@@ -62,28 +63,38 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                StyledText.headlineSmall(
-                  child: Text(widget.playerName),
-                ),
-                SizedBox(
-                  height: Die.size.toDouble(),
-                  width: Gap.defaultGapSize,
-                ),
-                ..._rolledDice.cast<Widget>().separated(const Gap() * 0.5),
-                const Spacer(),
-                IconButton(
-                  onPressed: _rolledDice.isEmpty ? null : clearDice,
-                  icon: const Icon(Icons.clear_all),
-                ),
-                ElevatedButton(
-                  onPressed: _willBeRolledDice.isEmpty
-                      ? null
-                      : () => rollDice(_willBeRolledDice),
-                  child: const Text('Roll!'),
-                ),
-              ],
+            SizedBox(
+              height: Die.size.toDouble(),
+              child: Row(
+                children: [
+                  StyledText.headlineSmall(
+                    child: Text(widget.playerName),
+                  ),
+                  const Gap(),
+                  ElevatedButton(
+                    onPressed: _willBeRolledDice.isEmpty
+                        ? null
+                        : () => rollDice(_willBeRolledDice),
+                    child: const Text('Roll!'),
+                  ),
+                  IconButton(
+                    onPressed: _rolledDice.isEmpty ? null : clearDice,
+                    icon: const Icon(Icons.clear_all),
+                  ),
+                  if (_rolledDice.isNotEmpty)
+                    Flexible(
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        alignment: Alignment.centerRight,
+                        child: Row(
+                          children: _rolledDice
+                              .cast<Widget>()
+                              .separated(const Gap() * 0.5),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
             const Divider(),
             Flexible(
