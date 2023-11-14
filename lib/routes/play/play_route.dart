@@ -73,6 +73,7 @@ class PlayRoute extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Game(
+          playerCount: 2,
           availableDice: dice,
           rng: Random(),
         ),

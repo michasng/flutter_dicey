@@ -15,12 +15,12 @@ class Game extends StatelessWidget {
     super.key,
     required this.availableDice,
     required this.rng,
-    this.playerCount = 1,
+    required this.playerCount,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: playerCount
           .times<Widget>(
             (index) => PlayerRollCard(
