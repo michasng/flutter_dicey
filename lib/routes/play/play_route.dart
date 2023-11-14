@@ -11,11 +11,11 @@ class PlayRoute extends StatelessWidget {
     Die(
       color: Color(0xff660000),
       sides: [
+        DieSide(action: DieAction.attack, multiplier: 3),
         DieSide(action: DieAction.attack, multiplier: 2),
         DieSide(action: DieAction.attack),
         DieSide(action: DieAction.attack),
-        DieSide(action: DieAction.heal),
-        DieSide(action: DieAction.speed),
+        DieSide(action: DieAction.explode),
         DieSide(action: DieAction.burn),
       ],
     ),
@@ -36,7 +36,7 @@ class PlayRoute extends StatelessWidget {
         DieSide(action: DieAction.heal, multiplier: 3),
         DieSide(action: DieAction.heal, multiplier: 2),
         DieSide(action: DieAction.heal),
-        DieSide(action: DieAction.attack),
+        DieSide(action: DieAction.heal),
         DieSide(action: DieAction.speed),
         DieSide(action: DieAction.burn),
       ],
@@ -55,12 +55,12 @@ class PlayRoute extends StatelessWidget {
     Die(
       color: Color(0xffffffff),
       sides: [
-        DieSide(action: DieAction.explode),
         DieSide(action: DieAction.attack),
-        DieSide(action: DieAction.attack, multiplier: 2),
         DieSide(action: DieAction.heal),
         DieSide(action: DieAction.speed),
-        DieSide(action: DieAction.burn),
+        DieSide(action: DieAction.attack),
+        DieSide(action: DieAction.heal),
+        DieSide(action: DieAction.speed),
       ],
     ),
   ];
