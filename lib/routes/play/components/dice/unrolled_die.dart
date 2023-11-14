@@ -18,7 +18,7 @@ class UnrolledDie extends StatelessWidget {
             width: Die.size.toDouble(),
             height: Die.size.toDouble(),
             color: die.color,
-            child: Image.asset(side.action.assetPath),
+            child: side,
           ),
       ],
     );

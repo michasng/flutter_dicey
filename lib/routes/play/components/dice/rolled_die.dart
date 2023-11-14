@@ -23,7 +23,7 @@ class RolledDie extends StatelessWidget {
       width: size.toDouble(),
       height: size.toDouble(),
       color: die.color,
-      child: Image.asset(upSide.action.assetPath),
+      child: upSide,
     );
   }
 
