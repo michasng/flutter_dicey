@@ -15,7 +15,7 @@ class Game extends StatelessWidget {
     super.key,
     required this.availableDice,
     required this.rng,
-    this.playerCount = 2,
+    this.playerCount = 1,
   });
 
   @override
