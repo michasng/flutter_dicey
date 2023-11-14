@@ -42,7 +42,6 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
             (die) => RolledDie.random(
               die,
               rng: widget.rng,
-              size: 32,
             ),
           )
           .toList();
@@ -64,7 +63,10 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
                 ),
                 const Spacer(),
                 ..._rolledDice.cast<Widget>().separated(const Gap() * 0.5),
-                const Gap(),
+                SizedBox(
+                  height: Die.size.toDouble(),
+                  width: Gap.defaultGapSize,
+                ),
                 ElevatedButton(
                   onPressed: _willBeRolledDice.isEmpty
                       ? null
