@@ -30,6 +30,39 @@ class PlayRoute extends StatelessWidget {
         DieSide(action: DieAction.burn),
       ],
     ),
+    Die(
+      color: Color(0xffff9999),
+      sides: [
+        DieSide(action: DieAction.heal, multiplier: 3),
+        DieSide(action: DieAction.heal, multiplier: 2),
+        DieSide(action: DieAction.heal),
+        DieSide(action: DieAction.attack),
+        DieSide(action: DieAction.speed),
+        DieSide(action: DieAction.burn),
+      ],
+    ),
+    Die(
+      color: Color(0xff000000),
+      sides: [
+        DieSide(action: DieAction.explode),
+        DieSide(action: DieAction.explode),
+        DieSide(action: DieAction.explode),
+        DieSide(action: DieAction.attack, multiplier: 2),
+        DieSide(action: DieAction.speed),
+        DieSide(action: DieAction.burn),
+      ],
+    ),
+    Die(
+      color: Color(0xffffffff),
+      sides: [
+        DieSide(action: DieAction.explode),
+        DieSide(action: DieAction.attack),
+        DieSide(action: DieAction.attack, multiplier: 2),
+        DieSide(action: DieAction.heal),
+        DieSide(action: DieAction.speed),
+        DieSide(action: DieAction.burn),
+      ],
+    ),
   ];
 
   const PlayRoute({super.key});
