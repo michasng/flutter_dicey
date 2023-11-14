@@ -48,6 +48,12 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
     });
   }
 
+  void clearDice() {
+    setState(() {
+      _rolledDice = [];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -61,11 +67,15 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
                 StyledText.headlineSmall(
                   child: Text(widget.playerName),
                 ),
-                const Spacer(),
-                ..._rolledDice.cast<Widget>().separated(const Gap() * 0.5),
                 SizedBox(
                   height: Die.size.toDouble(),
                   width: Gap.defaultGapSize,
+                ),
+                ..._rolledDice.cast<Widget>().separated(const Gap() * 0.5),
+                const Spacer(),
+                IconButton(
+                  onPressed: _rolledDice.isEmpty ? null : clearDice,
+                  icon: const Icon(Icons.clear_all),
                 ),
                 ElevatedButton(
                   onPressed: _willBeRolledDice.isEmpty
