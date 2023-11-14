@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:dicey/components/layout/gap.dart';
 import 'package:dicey/components/layout/separated.dart';
-import 'package:dicey/components/layout/wrapped.dart';
 import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
