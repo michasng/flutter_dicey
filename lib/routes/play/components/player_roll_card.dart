@@ -81,12 +81,12 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
                 wontBeRolledDice: _wontBeRolledDice,
                 willBeRolledDice: _willBeRolledDice,
                 moveToWillBeRolled: (die) => setState(() {
-                  _wontBeRolledDice.remove(die);
+                  // _wontBeRolledDice.remove(die);
                   _willBeRolledDice.add(die);
                 }),
                 moveToWontBeRolled: (die) => setState(() {
                   _willBeRolledDice.remove(die);
-                  _wontBeRolledDice.add(die);
+                  // _wontBeRolledDice.add(die);
                 }),
               ),
             ),
