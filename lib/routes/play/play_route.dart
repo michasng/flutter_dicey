@@ -11,8 +11,8 @@ class PlayRoute extends StatelessWidget {
     Die(
       color: Color(0xff660000),
       sides: [
-        DieSide(action: DieAction.attack, multiplier: 3),
         DieSide(action: DieAction.attack, multiplier: 2),
+        DieSide(action: DieAction.attack),
         DieSide(action: DieAction.attack),
         DieSide(action: DieAction.attack),
         DieSide(action: DieAction.explode),
