@@ -1,5 +1,4 @@
 import 'package:dicey/components/layout/separated.dart';
-import 'package:dicey/components/layout/wrapped.dart';
 import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +32,9 @@ class PlayerDicePools extends StatelessWidget {
           onTapDie: moveToWontBeRolled,
         ),
       ]
-          .wrapped((item) => Flexible(child: item))
-          .separated(const VerticalDivider()),
+          .map<Widget>((item) => Flexible(child: item))
+          .separated(const VerticalDivider())
+          .toList(),
     );
   }
 }

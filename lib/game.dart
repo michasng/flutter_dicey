@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:dicey/components/layout/wrapped.dart';
 import 'package:dicey/components/times.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/player_roll_card.dart';
@@ -29,7 +28,7 @@ class Game extends StatelessWidget {
               rng: rng,
             ),
           )
-          .wrapped((item) => Flexible(child: item))
+          .map((item) => Flexible(child: item))
           .toList(),
     );
   }
