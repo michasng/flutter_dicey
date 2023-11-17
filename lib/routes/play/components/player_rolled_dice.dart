@@ -1,7 +1,6 @@
-import 'package:dicey/components/layout/gap.dart';
-import 'package:dicey/components/layout/separated.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
 import 'package:flutter/material.dart';
+import 'package:micha_core/micha_core.dart';
 
 class PlayerRolledDice extends StatelessWidget {
   final List<RolledDie> rolledDice;

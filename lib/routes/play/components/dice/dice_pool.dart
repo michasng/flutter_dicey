@@ -1,8 +1,7 @@
-import 'package:dicey/components/layout/gap.dart';
-import 'package:dicey/components/layout/separated.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/unrolled_die.dart';
 import 'package:flutter/material.dart';
+import 'package:micha_core/micha_core.dart';
 
 class DicePool extends StatelessWidget {
   final Widget title;

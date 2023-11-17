@@ -1,12 +1,10 @@
 import 'dart:math';
 
-import 'package:dicey/components/layout/gap.dart';
-import 'package:dicey/components/layout/separated.dart';
-import 'package:dicey/components/text/headline_medium.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/dice/rolled_die.dart';
 import 'package:dicey/routes/play/components/player_dice_pools.dart';
 import 'package:flutter/material.dart';
+import 'package:micha_core/micha_core.dart';
 
 class PlayerRollCard extends StatefulWidget {
   final String playerName;
@@ -66,9 +64,7 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
               height: Die.size.toDouble(),
               child: Row(
                 children: [
-                  StyledText.headlineSmall(
-                    child: Text(widget.playerName),
-                  ),
+                  StyledText.headlineSmall(widget.playerName),
                   const Gap(),
                   ElevatedButton(
                     onPressed: _willBeRolledDice.isEmpty

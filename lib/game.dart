@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:dicey/components/times.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:dicey/routes/play/components/player_roll_card.dart';
 import 'package:flutter/material.dart';
+import 'package:micha_core/extensions/times.dart';
 
 class Game extends StatelessWidget {
   final List<Die> availableDice;
