@@ -1,7 +1,7 @@
 import 'package:dicey/routes/play/components/dice/dice_pool.dart';
 import 'package:dicey/routes/play/components/dice/die.dart';
 import 'package:flutter/material.dart';
-import 'package:micha_core/extensions/separated.dart';
+import 'package:micha_core/micha_core.dart';
 
 class PlayerDicePools extends StatelessWidget {
   final List<Die> wontBeRolledDice;

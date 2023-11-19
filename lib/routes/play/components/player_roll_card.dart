@@ -64,7 +64,7 @@ class _PlayerRollCardState extends State<PlayerRollCard> {
               height: Die.size.toDouble(),
               child: Row(
                 children: [
-                  StyledText.headlineSmall(widget.playerName),
+                  ThemedText.headlineSmall(widget.playerName),
                   const Gap(),
                   ElevatedButton(
                     onPressed: _willBeRolledDice.isEmpty

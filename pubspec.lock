@@ -103,10 +103,10 @@ packages:
     dependency: "direct main"
     description:
       name: micha_core
-      sha256: "3a78ff7cc887811b53e9d2e7e7ade45aade53903a52496e59ccf1eaf4d09144b"
+      sha256: ee91c56ba13786890bd687429aea4b77ffa63df9391781de91d1aa7aa83c5586
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.2.0"
   path:
     dependency: transitive
     description:
